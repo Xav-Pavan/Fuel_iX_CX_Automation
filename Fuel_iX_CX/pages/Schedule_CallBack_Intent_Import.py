@@ -55,20 +55,23 @@ class Import_SCB_Intent:
 
             print(f"Screenshot saved at: {screenshot_path}")
 
-        with allure.step("Closing import popup"):
+        with allure.step("Train the Bot"):
             self.page.get_by_test_id("chatbot-icon-btn").locator("img").first.click()
+            expect(self.page.locator("//div[normalize-space(text()) ='Train job has been scheduled.']")).to_be_visible(timeout=50000)
             Train_successfully = self.page.locator("//div[@class='MuiAlert-message css-1xsto0d']").inner_text()
             print(Train_successfully)
-            assert Train_successfully == "Templates imported successfully in bot category."
+            assert Train_successfully == "Train job has been scheduled."
             screenshot_path = r"C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/Train_successfully.png"
-
             self.page.screenshot(path=screenshot_path)
-
-            print(f"Screenshot saved at: {screenshot_path}")
 
         with allure.step("Verifying success message after bot training"):
             expect(self.page.locator("//div[text()=\"'Transaction Bot MQA' bot trained successfully\"]")) \
                 .to_be_visible(timeout=50000)
+            Trained_successfully = self.page.locator("//div[@class='MuiAlert-message css-1xsto0d']").inner_text()
+            print(Trained_successfully)
+            assert Trained_successfully == "'Transaction Bot MQA' bot trained successfully"
+            screenshot_path = r"C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/Trained_successfully.png"
+            self.page.screenshot(path=screenshot_path)
 
         # Optional validation: Uncomment if required
         # with allure.step("Verifying Open Chat Button is enabled"):
