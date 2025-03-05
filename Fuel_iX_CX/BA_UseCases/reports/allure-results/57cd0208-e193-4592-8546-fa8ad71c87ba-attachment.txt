@@ -1,0 +1,20 @@
+Template Created Successfully.
+Screenshot saved at: C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/creating_Schedule_Callback_Get_Available_Slots_Node_successfully.png
+Template Created Successfully.
+Screenshot saved at: C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/creating_Schedule_New_CallBack_Request_Node_successfully.png
+Template Created Successfully.
+Screenshot saved at: C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/creating_Booking_Success_Node_successfully.png
+Template Created Successfully.
+Screenshot saved at: C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/creating_Reschedule_CallBack_Request_Node_successfully.png
+Template Created Successfully.
+Screenshot saved at: C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/creating_Issue_Occurred_Node_successfully.png
+Template Created Successfully.
+Screenshot saved at: C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/creating_CallBack_Booking_Failed_Node_successfully.png
+Template Created Successfully.
+Screenshot saved at: C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/creating_Canceling_CallBack_Request_Node_successfully.png
+Templates imported successfully in bot category.
+Screenshot saved at: C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/Import_successfully.png
+Templates imported successfully in bot category.
+Screenshot saved at: C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/Train_successfully.png
+Initial Callback Confirmation: Today at 7:30 PM
+Rescheduled Callback Confirmation: Today at 8:00 PM
