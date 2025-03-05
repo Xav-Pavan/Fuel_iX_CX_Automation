@@ -26,24 +26,24 @@ def test_verify_the_schedule_call_back(page_fixture):
     with allure.step(f"Logging in as {username}"):
         pages["login_page"].loginDetails(username, domain, password)
 
-    # with allure.step("Creating Schedule Callback Nodes"):
-    #     pages["scb"].navigateCR_New_Intent()
-    #     pages["scb"].creating_Schedule_Callback_Get_Available_Slots_Node()
-    #     pages["scb"].creating_Schedule_New_CallBack_Request_Node()
-    #     pages["scb"].creating_Booking_Success_Node()
-    #     pages["scb"].creating_Reschedule_CallBack_Request_Node()
-    #     pages["scb"].creating_Issue_Occurred_Node()
-    #     pages["scb"].creating_CallBack_Booking_Failed_Node()
-    #     pages["scb"].creating_Canceling_CallBack_Request_Node()
-    #
-    # with allure.step("Editing Schedule Callback Nodes"):
-    #     pages["scb_e"].editing_Schedule_Callback_Get_Available_Slots_Node()
-    #     pages["scb_e"].editing_Schedule_New_CallBack_Request_Node()
-    #     pages["scb_e"].editing_Booking_Success_Node()
-    #     pages["scb_e"].editing_Reschedule_CallBack_Request_Node()
-    #     pages["scb_e"].editing_Issue_Occurred_Node()
-    #     pages["scb_e"].editing_Canceling_CallBack_Request_Node()
-    #     pages["scb_e"].editing_CallBack_Booking_Failed_Node()
+    with allure.step("Creating Schedule Callback Nodes"):
+        pages["scb"].navigateCR_New_Intent()
+        pages["scb"].creating_Schedule_Callback_Get_Available_Slots_Node()
+        pages["scb"].creating_Schedule_New_CallBack_Request_Node()
+        pages["scb"].creating_Booking_Success_Node()
+        pages["scb"].creating_Reschedule_CallBack_Request_Node()
+        pages["scb"].creating_Issue_Occurred_Node()
+        pages["scb"].creating_CallBack_Booking_Failed_Node()
+        pages["scb"].creating_Canceling_CallBack_Request_Node()
+
+    with allure.step("Editing Schedule Callback Nodes"):
+        pages["scb_e"].editing_Schedule_Callback_Get_Available_Slots_Node()
+        pages["scb_e"].editing_Schedule_New_CallBack_Request_Node()
+        pages["scb_e"].editing_Booking_Success_Node()
+        pages["scb_e"].editing_Reschedule_CallBack_Request_Node()
+        pages["scb_e"].editing_Issue_Occurred_Node()
+        pages["scb_e"].editing_Canceling_CallBack_Request_Node()
+        pages["scb_e"].editing_CallBack_Booking_Failed_Node()
 
     with allure.step("Importing the Intent"):
         pages["import_intent"].importing_scb_intent()
