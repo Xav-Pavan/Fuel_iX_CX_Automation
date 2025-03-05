@@ -5,6 +5,8 @@ from playwright.sync_api import expect
 from Practice.Fuel_iX_CX.locators.login_locators import LoginPageLocators
 from Practice.Fuel_iX_CX.utils.config import BASE_URL
 
+## login page class
+
 
 class LoginPage:
     """Handles user login functionality for the application."""
