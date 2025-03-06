@@ -1,5 +1,3 @@
-import time
-
 from playwright.sync_api import expect
 
 from Fuel_iX_CX.utils.imports import *

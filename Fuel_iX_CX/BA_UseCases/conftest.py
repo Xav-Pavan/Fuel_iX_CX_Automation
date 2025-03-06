@@ -1,18 +1,14 @@
-import os
-import re
-import time
+from Fuel_iX_CX.utils.imports import *
 import logging
-import allure
-import pytest
-from playwright.sync_api import sync_playwright, Playwright
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 
-def initialize_page_fixture(playwright: Playwright):
-    """Function to initialize Playwright browser, context, and page."""
-    browser = playwright.chromium.launch(headless=False)  # Change to True for headless mode
+@pytest.fixture(scope="function")
+def page_fixture(playwright: Playwright, request):
+    """Fixture to launch a browser and provide a Playwright page instance."""
+    browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
     page = context.new_page()
 
@@ -20,42 +16,25 @@ def initialize_page_fixture(playwright: Playwright):
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     logging.info("🚀 Launching the browser...")
 
-    return browser, context, page
-
-
-@pytest.fixture(scope="function")
-def page_fixture(playwright: Playwright, request):
-    """Fixture to provide a Playwright page instance using `initialize_page_fixture()`."""
-    browser, context, page = initialize_page_fixture(playwright)
-
     yield page  # Provide the page instance to tests
 
     # Stop tracing and save the trace file
-    # trace_path = "reports/trace.zip"
-    # context.tracing.stop(path=trace_path)
-    # logging.info(f"📝 Trace saved at: {trace_path}")
+    trace_path = "reports/trace.zip"
+    context.tracing.stop(path=trace_path)
+    logging.info(f"Trace saved at: {trace_path}")
 
-    # Capture a final success screenshot
+    # Capture a final success screenshot (optional)
     screenshot_dir = "reports/screenshots"
     os.makedirs(screenshot_dir, exist_ok=True)
 
     # Sanitize test case name to remove special characters
     test_case_name = re.sub(r'[<>:"/\\|?*]', '_', request.node.name)
 
-    # Generate timestamp for uniqueness
-    timestamp = time.strftime("%Y%m%d_%H%M%S")
-    screenshot_path = os.path.join(screenshot_dir, f"{test_case_name}_final_{timestamp}.png")
+    screenshot_path = os.path.join(screenshot_dir, f"{test_case_name}_final.png")
 
-    try:
-        if not page.is_closed():
-            page.screenshot(path=screenshot_path)
-            allure.attach.file(
-                screenshot_path,
-                name=f"{request.node.name} - Final Screenshot",
-                attachment_type=allure.attachment_type.PNG
-            )
-    except Exception as e:
-        logging.error(f"⚠️ Failed to capture final screenshot: {e}")
+    page.screenshot(path=screenshot_path)
+    allure.attach.file(screenshot_path, name=f"{request.node.name} - Final Screenshot",
+                       attachment_type=allure.attachment_type.PNG)
 
     context.close()
     browser.close()
@@ -96,18 +75,11 @@ def pytest_runtest_makereport(item, call):
                                   attachment_type=allure.attachment_type.PNG)
 
                 # Attach failure message to Allure
-                error_message = str(call.excinfo)
-                allure.attach(
-                    error_message,
-                    name=f"{test_case_name} - Failure Trace",
-                    attachment_type=allure.attachment_type.TEXT
-                )
-
-                logging.error(f"🔴 Test Case Failed: {test_case_name}")
-                logging.error(f"🔴 Error Message: {error_message}")
+                allure.attach(str(call.excinfo), name=f"{test_case_name} - Failure Trace",
+                              attachment_type=allure.attachment_type.TEXT)
 
             except Exception as e:
-                logging.error(f"⚠️ Failed to capture failure screenshot: {e}")
+                logging.error(f"⚠️ Failed to capture screenshot: {e}")
 
 
 @pytest.fixture(params=[("pulkit.kansal@telusinternational.com", "xd", "Shivi@0889")])

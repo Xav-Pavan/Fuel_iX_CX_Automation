@@ -144,7 +144,7 @@ class Schedule_Call_Back:
         self.page.wait_for_timeout(500)
 
         self.page.locator("(//div[@class='select__input-container css-19bb58m'])[3]").click()
-        self.page.locator("//div[normalize-space(text()) ='Issue_Occurred']").click()
+        self.page.locator("//div[normalize-space(text()) ='Issue_Occured']").click()
 
         self.page.locator("(//span[normalize-space()='GoTo'])[1]").click()
         self.page.wait_for_timeout(500)
@@ -169,9 +169,9 @@ class Schedule_Call_Back:
         self.page.locator("//div[normalize-space(text()) ='Schedule_New_CallBack_Request']").click()
 
         # Save changes
-        self.page.wait_for_timeout(800)
+        self.page.wait_for_timeout(1000)
         self.page.locator("(//span[normalize-space()='Save'])[1]").click()
-        self.page.wait_for_timeout(800)
+        self.page.wait_for_timeout(1000)
 
         self.page.locator("(//button[@class='btn b-other'])[1]").click()
         self.page.wait_for_timeout(500)
@@ -209,7 +209,7 @@ class Schedule_Call_Back:
         # Modify timezone information
         self.page.locator("(//div[contains(text(),'asia/kolkata')])[1]").clear()
         self.page.wait_for_timeout(500)
-        self.page.locator("(//div[@contenteditable='true'])[7]").fill("{{$sys:TimeZoneName}}")
+        self.page.locator("(//div[@contenteditable='true'])[6]").fill("{{$sys:TimeZoneName}}")
         self.page.wait_for_timeout(500)
 
         # Expand advanced settings
@@ -218,13 +218,13 @@ class Schedule_Call_Back:
         # Modify the desired callback time
         self.page.locator("(//div[contains(text(),'desiredTime')])[1]").clear()
         self.page.wait_for_timeout(500)
-        self.page.locator("(//div[@contenteditable='true'])[13]").fill("{{$local:selected_slot}}")
+        self.page.locator("(//div[@contenteditable='true'])[12]").fill("{{$local:selected_slot}}")
         self.page.wait_for_timeout(500)
 
         # Modify phone number details
         self.page.locator("(//div[contains(text(),'phone number')])[1]").clear()
         self.page.wait_for_timeout(500)
-        self.page.locator("(//div[@contenteditable='true'])[17]").fill("{{$local:ph_number}}")
+        self.page.locator("(//div[@contenteditable='true'])[16]").fill("{{$local:ph_number}}")
         self.page.wait_for_timeout(500)
 
         # Add a text message to display the webhook response
@@ -287,9 +287,9 @@ class Schedule_Call_Back:
         self.page.locator("//div[normalize-space(text()) ='CallBack_Booking_Failed']").click()
 
         # Save changes
-        self.page.wait_for_timeout(1000)
+        self.page.wait_for_timeout(800)
         self.page.locator("(//span[normalize-space()='Save'])[1]").click()
-        self.page.wait_for_timeout(1000)
+        self.page.wait_for_timeout(800)
 
         self.page.locator("(//button[@class='btn b-other'])[1]").click()
         self.page.wait_for_timeout(500)
@@ -387,7 +387,7 @@ class Schedule_Call_Back:
         # Add a text message displaying the collected slot values
         self.page.locator("(//span[normalize-space()='Text'])[1]").click()
         self.page.locator("(//div[@class='ql-editor ql-blank'])[1]").fill(
-            " Your service details are as follows: Service ID:{{$local:serviceId}} ,and Service Name: {{$local:serviceName}}")
+            " Your service details are as follows: Service ID:{{$local:serviceId}} ,and Service Name:{service_name}")
 
         # Save changes and exit the editor
         self.page.wait_for_timeout(800)
@@ -429,12 +429,12 @@ class Schedule_Call_Back:
 
         # Modify timezone information
         self.page.locator("(//div[contains(text(),'asia/kolkata')])[1]").clear()
-        self.page.locator("(//div[@contenteditable='true'])[9]").fill("{{$sys:TimeZoneName}}")
+        self.page.locator("(//div[@contenteditable='true'])[8]").fill("{{$sys:TimeZoneName}}")
 
         # Modify phone number details
         self.page.locator("(//a[normalize-space()='See More'])[1]").click()
         self.page.locator("(//div[contains(text(),'phone number')])[1]").clear()
-        self.page.locator("(//div[@contenteditable='true'])[20]").fill("{{$local:ph_number}}")
+        self.page.locator("(//div[@contenteditable='true'])[19]").fill("{{$local:ph_number}}")
         self.page.wait_for_timeout(500)
 
         # Add another Webhook action for rescheduling
@@ -445,15 +445,15 @@ class Schedule_Call_Back:
 
         # Modify timezone and clear unnecessary fields
         self.page.locator("(//div[contains(text(),'asia/kolkata')])[1]").clear()
-        self.page.locator("(//div[@contenteditable='true'])[25]").fill("{{$sys:TimeZoneName}}")
+        self.page.locator("(//div[@contenteditable='true'])[24]").fill("{{$sys:TimeZoneName}}")
         self.page.locator("(//div[contains(text(),'2021-04-21T12:00:00.000Z')])[1]").clear()
         self.page.locator("(//div[contains(text(),'1386-a53e3ab1-ff68-4cb9-ac5f-25edca906154')])[1]").clear()
         self.page.locator("(//div[contains(text(),'request-tbs-wls-cb-pcs-sch-cr1-en')])[1]").clear()
 
         # Update slot details
-        self.page.locator("(//div[@contenteditable='true'])[30]").fill("{{$local:serviceName}}")
-        self.page.locator("(//div[@contenteditable='true'])[29]").fill("{{$local:serviceId}}")
-        self.page.locator("(//div[@contenteditable='true'])[28]").fill("{{$local:selected_slot}}")
+        self.page.locator("(//div[@contenteditable='true'])[29]").fill("{{$local:serviceName}}")
+        self.page.locator("(//div[@contenteditable='true'])[28]").fill("{{$local:serviceId}}")
+        self.page.locator("(//div[@contenteditable='true'])[27]").fill("{{$local:selected_slot}}")
         self.page.wait_for_timeout(500)
 
         # Configure 'GoTo' logic for successful rescheduling
@@ -515,7 +515,7 @@ class Schedule_Call_Back:
 
     @allure.step("Editing 'Issue_Occurred' Node")
     def editing_Issue_Occurred_Node(self):
-        self.page.locator("//*[@title='Issue_Occurred']").click()
+        self.page.locator("//*[@title='Issue_Occured']").click()
 
         self.page.locator("//*[@data-action-type='edit']//img[@class='chatbot-header-icon']").click()
 
@@ -582,49 +582,27 @@ class Schedule_Call_Back:
 
         # adding 2 ask slot with filter ph_number empty true
         self.page.get_by_role("button", name="Add Cards").click()
-
         self.page.get_by_text("Ask Slots", exact=True).click()
-        # Select the required field (e.g., name)
-        self.page.locator("(//img[@title='Add Filter'])[2]").click()
-        self.page.locator("(//div[@class='select__input-container css-1duuv5x'])[1]").click()
-        self.page.locator("//div[normalize-space(text()) ='Select']//following::input[@type='text'][1]").fill("ph_number")
-        self.page.keyboard.press("Enter")
 
-        # Additional filtering
-        self.page.locator("(//div[@class='select__input-container css-1duuv5x'])[1]").click()
-        self.page.locator("(//div[@class='select__input-container css-4j0fso'])[1]").click()
-        self.page.locator("//div[normalize-space(text()) ='Empty']").click()
-        self.page.locator("(//button[normalize-space()='Done'])[1]").click()
+        ## applying filtering inside askslot
+        self.page.locator('//*[@class="add-filter-icon"]//img').nth(1).click()
+        self.page.get_by_role("combobox").nth(3).fill('ph_number')
+        self.page.get_by_role("combobox").nth(3).press("Enter")
+        self.page.locator('//*[@role="combobox" and @id="Condition"]').click()
+        self.page.locator('''//*[contains(@id,'listbox')]//descendant::div[text()='Empty']''').click()
 
-        # ## applying filtering inside askslot
-        # self.page.locator("(//div[@class='select__input-container css-1duuv5x'])[1]").click()
-        #
-        # self.page.get_by_role("combobox").nth(3).fill('ph_number')
-        # self.page.get_by_role("combobox").nth(3).press("Enter")
-        # self.page.locator('//*[@role="combobox" and @id="Condition"]').click()
-        # self.page.locator('''//*[contains(@id,'listbox')]//descendant::div[text()='Empty']''').click()
-        #
-        # self.page.locator("//button[normalize-space()='Done']").click()
+        self.page.locator("//button[normalize-space()='Done']").click()
 
         ## adding first questions inside ask slot
         self.page.locator('//*[@class="editable-field question-field"]').fill(
             '''<b>Please provide your phone number which you have used while booking your slot.</b>''')
 
-        # self.page.get_by_role("combobox").nth(2).click()
-        self.page.locator("(//div[@class='react-select-input-width__input-container css-19bb58m'])[1]").click()
+        self.page.get_by_role("combobox").nth(2).click()
 
         ## adding validation atype ans save answer to slot value in Ask slot
-        self.page.locator("//div[normalize-space(text()) ='Phone No.']").click()
-        # self.page.get_by_role("combobox").nth(3).fill('ph_number')
-        # self.page.get_by_role("combobox").nth(3).press("Enter")
-        # Map phone number slot
-        self.page.locator("(//div[@class='select__input-container css-1duuv5x'])[1]").click()
-        self.page.locator("//div[normalize-space(text())='Map with slot']//following::input[@type='text'][1]").fill(
-            "ph_number"
-        )
-        self.page.keyboard.press("Enter")
-        self.page.locator("(//div[@class='select__input-container css-1duuv5x'])[1]").click()
-
+        self.page.locator("//*[contains(@id,'listbox')]//descendant::div[text()='Phone No.']").click()
+        self.page.get_by_role("combobox").nth(3).fill('ph_number')
+        self.page.get_by_role("combobox").nth(3).press("Enter")
         self.page.get_by_role("button", name="Add Cards").click()
 
         ## add text card 3 card  with filters with service id empty true
@@ -697,8 +675,7 @@ class Schedule_Call_Back:
         self.page.keyboard.press("Enter")
 
         self.page.locator("(//div[contains(@class,'select__input-container css-1duuv5x')])[2]").click()
-        # self.page.locator("(//div[contains(@class,'select__input-container css-1duuv5x')])[2]").click()
-        # self.page.locator("//*[contains(@id,'listbox')]//descendant::div[@title='sR.responseCode']").click()
+
         self.page.locator('//*[@role="combobox" and @id="Condition"]').click()
         self.page.locator('''//*[contains(@id,'listbox')]//descendant::div[text()='Equals']''').click()
         self.page.locator("//input[@placeholder='Value']").fill("200")
@@ -729,8 +706,7 @@ class Schedule_Call_Back:
         self.page.keyboard.press("Enter")
 
         self.page.locator("(//div[contains(@class,'select__input-container css-1duuv5x')])[2]").click()
-        # self.page.get_by_role("combobox").nth(8).click()
-        # self.page.locator("//*[contains(@id,'listbox')]//descendant::div[@title='sR.responseCode']").click()
+
         self.page.locator('//*[@role="combobox" and @id="Condition"]').click()
         self.page.locator('''//*[contains(@id,'listbox')]//descendant::div[text()='Not Equals']''').click()
         self.page.locator("//input[@placeholder='Value']").fill("200")
