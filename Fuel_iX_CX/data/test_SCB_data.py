@@ -1,3 +1,6 @@
+import os
+
+
 class SCB_TestData:
     INTENT_NAME = "BA_Schedule_call_back_Scenario"
     FIRST_NODE_NAME = "Schedule_Callback_Get_Available_Slots"
@@ -33,7 +36,15 @@ class SCB_TestData:
     SEVENTH_NODE_ANSWER_5 = "Your callback has been cancelled."
     SEVENTH_NODE_ANSWER_6 = "Sorry, We are unable to cancel your callback. Please try after some time."
     EXPECTED_NODE_CREATE_SUCCESS = "Template Created Successfully."
-    SCREENSHOT_PATH = r"C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/"
+
+    # dynamic screenshot path
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Current script's directory
+    PROJECT_ROOT = os.path.dirname(BASE_DIR)  # Move up to project_root
+    # print(BASE_DIR)
+    # Construct the dynamic screenshot path
+    SCREENSHOT_PATH = os.path.join(PROJECT_ROOT, "reports", "Screenshots")
+
     FILE_TYPE = ".png"
     CUSTOMER_SLOT_NAME = "name"
     ASK_SLOT_ANSWER_1 = "<b>So we know who to ask for, what is your name?</b>"

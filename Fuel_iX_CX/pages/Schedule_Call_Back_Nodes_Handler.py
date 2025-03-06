@@ -2,6 +2,7 @@ from Fuel_iX_CX.utils.imports import *
 from Fuel_iX_CX.data.test_SCB_data import SCB_TestData
 from Fuel_iX_CX.locators.scb_usecase_locators import ScheduleCallBackLocators
 import logging
+import os
 
 
 class Schedule_Call_Back_Nodes:
@@ -56,9 +57,12 @@ class Schedule_Call_Back_Nodes:
         assert actual_message == success_message, f"Expected: {success_message}, but got: {actual_message}"
 
         # Save screenshot
-        screenshot_path = f"{SCB_TestData.SCREENSHOT_PATH}{screenshot_filename}{SCB_TestData.FILE_TYPE}"
+
+        #  screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH,
+        screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH, f"{screenshot_filename}{SCB_TestData.FILE_TYPE}")
         self.page.screenshot(path=screenshot_path)
-        print(f"Screenshot saved at: {screenshot_path}")
+
+        # print(f"Screenshot saved at: {screenshot_path}")
 
         self.page.wait_for_timeout(500)
         self.locators.BACK_BUTTON.click()

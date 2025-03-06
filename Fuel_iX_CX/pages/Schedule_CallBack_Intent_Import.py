@@ -1,7 +1,8 @@
 from Fuel_iX_CX.utils.imports import *
 import logging
-
+import os
 from playwright.sync_api import expect
+from Fuel_iX_CX.data.test_SCB_data import SCB_TestData
 
 
 class Import_SCB_Intent:
@@ -49,8 +50,7 @@ class Import_SCB_Intent:
             Import_successfully = self.page.locator("//div[@class='MuiAlert-message css-1xsto0d']").inner_text()
             print(Import_successfully)
             assert Import_successfully == "Templates imported successfully in bot category."
-            screenshot_path = r"C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/Import_successfully.png"
-
+            screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH, "Import_successfully.png")
             self.page.screenshot(path=screenshot_path)
 
             print(f"Screenshot saved at: {screenshot_path}")
@@ -61,7 +61,8 @@ class Import_SCB_Intent:
             Train_successfully = self.page.locator("//div[@class='MuiAlert-message css-1xsto0d']").inner_text()
             print(Train_successfully)
             assert Train_successfully == "Train job has been scheduled."
-            screenshot_path = r"C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/Train_successfully.png"
+            screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH, "Train_job_has_been_scheduled.png")
+
             self.page.screenshot(path=screenshot_path)
 
         with allure.step("Verifying success message after bot training"):
@@ -70,7 +71,8 @@ class Import_SCB_Intent:
             Trained_successfully = self.page.locator("//div[@class='MuiAlert-message css-1xsto0d']").inner_text()
             print(Trained_successfully)
             assert Trained_successfully == "'Transaction Bot MQA' bot trained successfully"
-            screenshot_path = r"C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/Trained_successfully.png"
+            screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH, "Transaction_Bot_MQA_bot_trained_successfully.png")
+
             self.page.screenshot(path=screenshot_path)
 
         # Optional validation: Uncomment if required

@@ -1,7 +1,8 @@
 from playwright.sync_api import expect
 
 from Fuel_iX_CX.utils.imports import *
-
+from Fuel_iX_CX.data.test_SCB_data import SCB_TestData
+import os
 
 class Schedule_Call_Back_Dashboard:
     """Class to handle the Schedule Call Back Dashboard interactions in the Playwright UI."""
@@ -33,6 +34,18 @@ class Schedule_Call_Back_Dashboard:
         self.page.locator("(//span[@title='Click to see all transactional details'])[1]").click()
 
         # Step 5: Capture a full-page screenshot for verification
-        screenshot_path = "C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/reports/full_page_screenshot.png"
+        # screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH)
+        # self.page.screenshot(path=screenshot_path, full_page=True)
+        # allure.attach.file(screenshot_path, name="Dashboard Screenshot", attachment_type=allure.attachment_type.PNG)
+        # Ensure the directory exists
+        os.makedirs(SCB_TestData.SCREENSHOT_PATH, exist_ok=True)
+
+        # Define the full screenshot path
+        screenshot_filename = "dashboard_screenshot"
+        screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH, f"{screenshot_filename}{SCB_TestData.FILE_TYPE}")
+
+        # Capture screenshot
         self.page.screenshot(path=screenshot_path, full_page=True)
+
+        # Attach screenshot to Allure report
         allure.attach.file(screenshot_path, name="Dashboard Screenshot", attachment_type=allure.attachment_type.PNG)

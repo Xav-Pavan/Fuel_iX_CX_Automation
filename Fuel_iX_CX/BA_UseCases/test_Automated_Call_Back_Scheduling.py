@@ -53,4 +53,3 @@ def test_verify_the_schedule_call_back(page_fixture):
 
     with allure.step("Dashboard"):
         pages["dashboard"].dashboard()
-    #checking123

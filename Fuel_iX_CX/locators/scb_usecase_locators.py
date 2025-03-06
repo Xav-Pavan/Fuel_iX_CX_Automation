@@ -21,7 +21,7 @@ class ScheduleCallBackLocators:
         # Node Creation Locators
         self.TEMPLATE_TITLE_INPUT = self.page.get_by_placeholder("Enter template title here")
         self.RICH_TEXT_AREA = self.page.locator(".questions-rich-text-area")
-        self.ADD_CARDS_BUTTON = self.page.get_by_role("button", name="Add   Cards")
+
         self.TEXT_OPTION = self.page.get_by_text("Text", exact=True)
         self.PRE_DIV_FIRST = self.page.locator("pre div").first
         self.SAVE_BUTTON = self.page.get_by_role("button", name="Save")
@@ -58,12 +58,12 @@ class ScheduleCallBackLocators:
         self.SCHEDULE_CALLBACK_GET_AVAILABLE_SLOTS = self.page.locator(
             "(//div[@title='Schedule_Callback_Get_Available_Slots'])[1]")
         self.SCHEDULE_NEW_CALLBACK_REQUEST = self.page.locator("(//div[@title='Schedule_New_CallBack_Request'])[1]")
-        self.BOOKING_SUCCESS_NODE = self.page.locator("(//div[@title='Booking_Success'])[1]")
+        self.BOOKING_SUCCESS_NODE_SELECT = self.page.locator("(//div[@title='Booking_Success'])[1]")
         self.RESCHEDULE_CALLBACK_REQUEST = self.page.locator("(//div[@title='Reschedule_CallBack_Request'])[1]")
 
         # Node Settings and Actions
         self.NODE_SETTINGS_ICON = self.page.locator("(//img[@class='chatbot-header-icon'])[2]")
-        self.ADD_CARDS_BUTTON = self.page.locator("(//button[normalize-space()='Add   Cards'])[1]")
+
         self.SAVE_BUTTON = self.page.locator("(//span[normalize-space()='Save'])[1]")
 
         # Text Editing Locators
@@ -71,7 +71,7 @@ class ScheduleCallBackLocators:
         self.NEW_TEXT_INPUT = self.page.locator("(//div[@class='ql-editor ql-blank'])[1]")
 
         # Slot Selection and Mapping
-        self.ASK_SLOTS_BUTTON = self.page.locator("(//span[normalize-space()='Ask Slots'])[1]")
+        self.ASK_SLOTS_BUTTON_1 = self.page.locator("(//span[normalize-space()='Ask Slots'])[1]")
         self.ADD_FILTER_ICON_1 = self.page.locator("(//img[@title='Add Filter'])[2]")
         self.ADD_FILTER_ICON_2 = self.page.locator("(//img[@title='Add Filter'])[3]")
         self.SELECT_FIELD_ICON = self.page.locator("(//*[name()='svg'][@class='css-8mmkcg'])[5]")
@@ -84,7 +84,7 @@ class ScheduleCallBackLocators:
 
         # Filtering Options
         self.EMPTY_CONDITION = self.page.locator("//div[normalize-space(text()) ='Empty']")
-        self.DONE_BUTTON = self.page.locator("(//button[normalize-space()='Done'])[1]")
+        self.DONE_BUTTON_1 = self.page.locator("(//button[normalize-space()='Done'])[1]")
 
         # Question Field and Conditions
         self.QUESTION_FIELD = self.page.locator("(//div[@class='editable-field question-field'])[1]")
@@ -124,7 +124,7 @@ class ScheduleCallBackLocators:
         # CallBack Booking Failed Node Locators
         self.CALLBACK_BOOKING_FAILED_NODE = self.page.locator("//*[@title='CallBack_Booking_Failed']")
         self.ADD_CARDS_BUTTON = self.page.get_by_role("button", name="Add   Cards")
-        self.TEXT_OPTION = self.page.get_by_text("Text", exact=True)
+
         self.GOTO_BUTTON = self.page.locator("(//span[normalize-space()='GoTo'])[1]")
         self.SELECT_DROPDOWN = self.page.locator("(//div[contains(@class,'select__input-container css-19bb58m')])[2]")
         self.SELECT_OPTION = self.page.locator(
@@ -137,7 +137,7 @@ class ScheduleCallBackLocators:
         self.CONDITION_DROPDOWN = self.page.locator('//*[@role="combobox" and @id="Condition"]')
         self.CONDITION_EMPTY = self.page.locator('''//*[contains(@id,'listbox')]//descendant::div[text()='Empty']''')
         self.DONE_BUTTON = self.page.locator("//button[normalize-space()='Done']")
-        self.QUESTION_FIELD = self.page.locator('//*[@class="editable-field question-field"]')
+
 
         # Webhook Locators
         self.WEBHOOK_DROPDOWN = self.page.locator("//*[contains(@id,'wekbook-dropdown')]")
@@ -159,4 +159,38 @@ class ScheduleCallBackLocators:
         # Final Save & Exit
         self.FINAL_SAVE_BUTTON = self.page.locator("(//span[normalize-space()='Save'])[1]")
         self.FINAL_BACK_BUTTON = self.page.locator("//button[@class='btn b-other']")
+
+
+
+
+
+        #         3333333333
+        self.EDIT_GET_AVAILABLE_SLOTS = self.page.locator(
+            "(//div[@title='Schedule_Callback_Get_Available_Slots'])[1]")
+        self.OPEN_NODE_SETTINGS = self.page.locator("(//img[@class='chatbot-header-icon'])[2]")
+        self.ADD_NEW_CARD = self.page.locator("(//button[normalize-space()='Add   Cards'])[1]")
+        self.CLEAR_EXISTING_TEXT = self.page.locator("(//p[normalize-space()='this is test scb'])[1]")
+        self.FILL_NEW_MESSAGE = self.page.locator("(//div[@class='ql-editor ql-blank'])[1]")
+        self.ASK_SLOTS = self.page.locator("(//span[normalize-space()='Ask Slots'])[1]")
+        self.ADD_FILTER = self.page.locator("(//img[@title='Add Filter'])[2]")
+        self.SELECT_REQUIRED_FIELD = self.page.locator("(//*[name()='svg'][@class='css-8mmkcg'])[5]")
+        self.SELECT_REQUIRED_FILED_1 = self.page.locator("(//*[name()='svg'][@class='css-8mmkcg'])[6]")
+        self.FILL_NAME_FIELD = self.page.locator(
+            "//div[normalize-space(text()) ='Select']//following::input[@type='text'][1]")
+        self.TEXT_RESPONSE = self.page.locator("(//span[normalize-space()='Text'])[1]")
+        self.FILL_TEXT_RESPONSE = self.page.locator("(//div[@class='ql-editor ql-blank'])[1]")
+        self.WEBHOOK_RESPONSE = self.page.locator("(//span[normalize-space()='Webhook'])[1]")
+
+        self.SET_TIMEZONE = self.page.locator("(//div[contains(text(),'asia/kolkata')])[1]")
+
+        self.FILL_PHONE_NUMBER = self.page.locator("(//div[@contenteditable='true'])[24]")
+        self.APPLY_CONDITIONS = self.page.locator("(//button[normalize-space()='Done'])[1]")
+        self.SAVE_CHANGES = self.page.locator("(//span[normalize-space()='Save'])[1]")
+
+
+
+
+
+
+
 
