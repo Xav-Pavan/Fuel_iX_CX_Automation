@@ -45,7 +45,7 @@ class Schedule_Call_Back_Widget:
         expect(self.page.locator(
             "//span[@class='displayed-text']//b[contains(text(),'Next, please enter the phone number you want us to')]")).to_be_visible(
             timeout=60000)
-        self.page.locator("(//*[@id='user-input-message'])[1]").fill("9132736951")
+        self.page.locator("(//*[@id='user-input-message'])[1]").fill("9172736951")
         expect(self.page.locator("(//button[@id='msgSenderButton'])[1]")).to_be_enabled(timeout=50000)
         self.page.locator("(//button[@id='msgSenderButton'])[1]").click()
 

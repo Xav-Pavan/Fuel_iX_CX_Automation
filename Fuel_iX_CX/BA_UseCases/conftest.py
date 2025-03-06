@@ -6,6 +6,8 @@ import allure
 import pytest
 from playwright.sync_api import sync_playwright, Playwright
 
+from Fuel_iX_CX.data.test_SCB_data import SCB_TestData
+
 # Set up logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -36,7 +38,7 @@ def page_fixture(playwright: Playwright, request):
     # logging.info(f"📝 Trace saved at: {trace_path}")
 
     # Capture a final success screenshot
-    screenshot_dir = "reports/screenshots"
+    screenshot_dir = os.path.join(SCB_TestData.SCREENSHOT_PATH)
     os.makedirs(screenshot_dir, exist_ok=True)
 
     # Sanitize test case name to remove special characters
@@ -44,7 +46,7 @@ def page_fixture(playwright: Playwright, request):
 
     # Generate timestamp for uniqueness
     timestamp = time.strftime("%Y%m%d_%H%M%S")
-    screenshot_path = os.path.join(screenshot_dir, f"{test_case_name}_final_{timestamp}.png")
+    screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH, f"{test_case_name}_final_{timestamp}.png")
 
     try:
         if not page.is_closed():
