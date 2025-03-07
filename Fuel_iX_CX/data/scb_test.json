@@ -1,0 +1,43 @@
+{
+
+    "valid_user": {
+      "username": "puchha.pavan@telusinternational.com",
+      "password": "*Pavan@7351",
+      "domain": "xd"
+      },
+    "Schedule_Callback_Get_Available_Slots": {
+      "NodetemplateTitle": "Schedule_Callback_Get_Available_Slots",
+      "nodequestion": "Please allocate the earliest possible time slot for a scheduled call",
+      "textcardmsg": "this is test scb"
+    },
+    "Schedule_New_CallBack_Request": {
+      "NodetemplateTitle": "Schedule_New_CallBack_Request",
+      "nodequestion": "run Schedule_New_CallBack_Request node",
+      "textcardmsg": "submit call back"
+    },
+    "Booking_Success": {
+      "NodetemplateTitle": "Booking_Success",
+      "nodequestion": "run booking success node",
+      "textcardmsg": "this is booking success"
+    },
+    "Reschedule_CallBack_Request": {
+      "NodetemplateTitle": "Reschedule_CallBack_Request",
+      "nodequestion": "run Reschedule_CallBack_Request node",
+      "textcardmsg": "this is reschedule"
+    },
+    "Issue_Occurred": {
+      "NodetemplateTitle": "Issue_Occurred",
+      "nodequestion": "run Issue_Occurred node",
+      "textcardmsg": "issue occurred"
+    },
+    "CallBack_Booking_Failed": {
+      "NodetemplateTitle": "CallBack_Booking_Failed",
+      "nodequestion": "run CallBack_Booking_Failed node",
+      "textcardmsg": "booking failed"
+    },
+    "Canceling_CallBack_Request": {
+      "NodetemplateTitle": "Canceling_CallBack_Request",
+      "nodequestion": "run Canceling_CallBack_Request node",
+      "textcardmsg": "this is cancel"
+    }
+}
