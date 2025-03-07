@@ -1,0 +1,12 @@
+{
+  "valid_user": {
+    "username": "puchha.pavan@telusinternational.com",
+    "password": "*Pavan@7351",
+    "domain"    : "xd"
+  },
+  "invalid_user": {
+    "username": "wrong_user",
+    "password": "wrong_pass",
+    "domain"    : "xd"
+  }
+}
