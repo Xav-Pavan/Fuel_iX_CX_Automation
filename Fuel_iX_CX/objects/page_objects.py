@@ -1,16 +1,18 @@
+import allure
 
-from Fuel_iX_CX.utils.imports import *  # Import all necessary modules
+from Fuel_iX_CX.utils.import_settings import *
 
 
 def initialize_page_objects(page):
-    """Function to initialize all page objects and return them as a dictionary."""
+    """Initialize all page objects and return them as a dictionary."""
 
     with allure.step("Initializing Page Objects"):
         return {
             "login_page": LoginPage(page),
-            "scb": Schedule_Call_Back_Nodes(page),
-            "scb_e": Schedule_Call_Back(page),
-            "import_intent": Import_SCB_Intent(page),
-            "widget": Schedule_Call_Back_Widget(page),
-            "dashboard": Schedule_Call_Back_Dashboard(page),
+            "scb_page": SCBPage(page),
+            "dashboard_page": DashBoardPage(page),
+            "centralrepo_page": CentralRepositoryPage(page),
+            "flowrepo_page": FlowRepositoryPage(page),
+            "intentTemplate_page": IntentTemplatePage(page),
+
         }

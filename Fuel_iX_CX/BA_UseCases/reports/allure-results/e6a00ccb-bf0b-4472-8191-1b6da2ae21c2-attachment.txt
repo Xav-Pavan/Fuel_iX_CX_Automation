@@ -1,6 +1,0 @@
-2025-03-06 12:55:18,452 - INFO - 🚀 Launching the browser...
-2025-03-06 12:55:18,482 - INFO - 🌍 Navigating to website...
-2025-03-06 12:55:49,257 - ERROR - ❌ Test 'test_verify_the_schedule_call_back' failed! Screenshot saved at: reports/failed_screenshots\test_verify_the_schedule_call_back_failed_20250306_125549.png
-2025-03-06 12:55:49,264 - ERROR - 🔴 Test Case Failed: test_verify_the_schedule_call_back
-2025-03-06 12:55:49,264 - ERROR - 🔴 Error Message: <ExceptionInfo TimeoutError('Page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to "https://mqa2.xavlab.xyz/", waiting until "load"\n') tblen=36>
-2025-03-06 12:55:49,756 - INFO - 👋 Browser closed successfully.

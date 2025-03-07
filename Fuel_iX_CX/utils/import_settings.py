@@ -1,0 +1,6 @@
+from Fuel_iX_CX.pages.module_pages.analyticsanddashboard_page import DashBoardPage
+from Fuel_iX_CX.pages.module_pages.central_repository_page import CentralRepositoryPage
+from Fuel_iX_CX.pages.module_pages.flowrepository_page import FlowRepositoryPage
+from Fuel_iX_CX.pages.module_pages.intenttemplate_page import IntentTemplatePage
+from Fuel_iX_CX.pages.module_pages.login_page import LoginPage
+from Fuel_iX_CX.pages.use_cases_pages.Schedule_Call_Back_Pages.scb_page import SCBPage

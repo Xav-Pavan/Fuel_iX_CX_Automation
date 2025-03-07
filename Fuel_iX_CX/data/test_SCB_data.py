@@ -17,7 +17,7 @@ class SCB_TestData:
     THIRD_NODE_ANSWER = "this is booking success"
     THIRD_NODE_ANSWER_2 = "Thanks! An agent will contact you at your scheduled time to assist you."
     THIRD_NODE_ANSWER_3 = "If you want to cancel or reschedule your booking, please click below."
-    THIRD_NODE_ANSWER_4 = "Your service details are as follows: Service ID:{{$local:serviceId}} ,and Service Name:{service_name}"
+    THIRD_NODE_ANSWER_4 = "Your service details are as follows: Service ID:{{$local:serviceId}} ,and Service Name: {{$local:serviceName}}"
     FOURTH_NODE_NAME = "Reschedule_CallBack_Request"
     FOURTH_NODE_ANSWER = "this is reschedule"
     FOURTH_NODE_ANSWER_2 = "Please wait, we are rescheduling your call back..."
@@ -65,3 +65,4 @@ class SCB_TestData:
     WEBHOOK_PHONE_NUMBER = "{{$local:ph_number}}"
     SERVICE_NAME_SLOT = "serviceName"
     SERVICE_ID_SLOT = "serviceId"
+
