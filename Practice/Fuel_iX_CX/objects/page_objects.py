@@ -5,6 +5,8 @@ from Fuel_iX_CX.pages.intent_page import IntentPage
 
 from Fuel_iX_CX.pages.intenttemplate_page import IntentTemplatePage
 from Fuel_iX_CX.utils.imports import *  # Import all necessary modules
+from Practice.Fuel_iX_CX.pages.analyticsanddashboard_page import DashBoardPage
+from Practice.Fuel_iX_CX.pages.usermanagement_page import UserManagementPage
 
 
 def initialize_page_objects(page):
@@ -23,4 +25,5 @@ def initialize_page_objects(page):
             "import_intent": Import_SCB_Intent(page),
             "widget": Schedule_Call_Back_Widget(page),
             "dashboard": Schedule_Call_Back_Dashboard(page),
+            "usermanagement": UserManagementPage(page),
         }

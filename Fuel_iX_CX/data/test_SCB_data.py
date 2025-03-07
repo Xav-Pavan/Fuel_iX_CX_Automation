@@ -33,7 +33,7 @@ class SCB_TestData:
     SEVENTH_NODE_ANSWER_5 = "Your callback has been cancelled."
     SEVENTH_NODE_ANSWER_6 = "Sorry, We are unable to cancel your callback. Please try after some time."
     EXPECTED_NODE_CREATE_SUCCESS = "Template Created Successfully."
-    SCREENSHOT_PATH = r"C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/"
+    SCREENSHOT_PATH = r"C:/Users/anshu.sharma/Fuel_iX_CX_Automation/Fuel_iX_CX/BA_UseCases/success_images"
     FILE_TYPE = ".png"
     CUSTOMER_SLOT_NAME = "name"
     ASK_SLOT_ANSWER_1 = "<b>So we know who to ask for, what is your name?</b>"

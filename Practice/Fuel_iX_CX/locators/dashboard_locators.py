@@ -5,3 +5,4 @@ class ReportAndAnalyticsDashboardPageLocators:
         self.page = page
         self.DASHBOARDPAGEVALIDATION_TEXT = self.page.locator("//span[@title='Analytics & Reports']")
         self.CENTRAL_REPOSITORY_ICON=  self.page.locator("//li[@data-tip='Central Repository']//a")
+        self.User_Management_Icon=  self.page.locator("//a[@class='selected']//*[name()='svg']")

@@ -110,7 +110,7 @@ def pytest_runtest_makereport(item, call):
                 logging.error(f"⚠️ Failed to capture failure screenshot: {e}")
 
 
-@pytest.fixture(params=[("pulkit.kansal@telusinternational.com", "xd", "Shivi@0889")])
+@pytest.fixture(params=[("anshu.sharma@telusinternational.com", "xd", "Password@12")])
 def logintestdata(request):
     """Fixture to provide login test data."""
     return request.param

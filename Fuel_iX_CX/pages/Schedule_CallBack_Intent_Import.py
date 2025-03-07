@@ -49,7 +49,7 @@ class Import_SCB_Intent:
             Import_successfully = self.page.locator("//div[@class='MuiAlert-message css-1xsto0d']").inner_text()
             print(Import_successfully)
             assert Import_successfully == "Templates imported successfully in bot category."
-            screenshot_path = r"C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/Import_successfully.png"
+            screenshot_path = r"C:/Users/anshu.sharma/Fuel_iX_CX_Automation/Fuel_iX_CX/BA_UseCases/success_images/test1.png"
 
             self.page.screenshot(path=screenshot_path)
 
@@ -61,7 +61,8 @@ class Import_SCB_Intent:
             Train_successfully = self.page.locator("//div[@class='MuiAlert-message css-1xsto0d']").inner_text()
             print(Train_successfully)
             assert Train_successfully == "Train job has been scheduled."
-            screenshot_path = r"C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/Train_successfully.png"
+            screenshot_path = r"C:/Users/anshu.sharma/Fuel_iX_CX_Automation/Fuel_iX_CX/BA_UseCases/success_images/test2.png"
+
             self.page.screenshot(path=screenshot_path)
 
         with allure.step("Verifying success message after bot training"):
@@ -70,7 +71,8 @@ class Import_SCB_Intent:
             Trained_successfully = self.page.locator("//div[@class='MuiAlert-message css-1xsto0d']").inner_text()
             print(Trained_successfully)
             assert Trained_successfully == "'Transaction Bot MQA' bot trained successfully"
-            screenshot_path = r"C:/Users/puchha.pavan/PycharmProjects/PyTest_Python/Fuel_iX_CX/BA_UseCases/success_images/Trained_successfully.png"
+            screenshot_path = r"C:/Users/anshu.sharma/Fuel_iX_CX_Automation/Fuel_iX_CX/BA_UseCases/success_images/test3.png"
+
             self.page.screenshot(path=screenshot_path)
 
         # Optional validation: Uncomment if required
