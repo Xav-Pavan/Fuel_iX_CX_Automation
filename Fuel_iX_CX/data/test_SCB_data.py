@@ -46,6 +46,8 @@ class SCB_TestData:
     SCREENSHOT_PATH = os.path.join(PROJECT_ROOT, "reports", "Screenshots")
 
     FILE_TYPE = ".png"
+
+
     CUSTOMER_SLOT_NAME = "name"
     ASK_SLOT_ANSWER_1 = "<b>So we know who to ask for, what is your name?</b>"
     ASK_SLOT_ANSWER_2 = "<b>Next, please enter the phone number you want us to call.</b>"
@@ -65,4 +67,9 @@ class SCB_TestData:
     WEBHOOK_PHONE_NUMBER = "{{$local:ph_number}}"
     SERVICE_NAME_SLOT = "serviceName"
     SERVICE_ID_SLOT = "serviceId"
-
+    WIDGET_FIRST_QUESTION = "Please allocate the earliest possible time slot for a scheduled call"
+    WIDGET_CUSTOMER_NAME = "Hulk"
+    WIDGET_CUSTOMER_PHONE_NUMBER = "9193736951"
+    EXPECTED_SUCCESS_MESSAGE_IMPORT = "Templates imported successfully in bot category."
+    EXPECTED_SUCCESS_MESSAGE_TRAIN = "Train job has been scheduled."
+    EXPECTED_SUCCESS_MESSAGE_TRAINED = "'Transaction Bot MQA' bot trained successfully"
