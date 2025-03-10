@@ -102,7 +102,7 @@ git commit -m "Updated login page"
 **(Only required once) Set up GitHub remote URL:**
 
 ```
-git remote set-url origin https://Xav-Pavan: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@github.com/Xav-Pavan/Fuel_iX_CX_Automation.git
+git remote set-url origin https://Xav-Pavan:{token}@github.com/Xav-Pavan/Fuel_iX_CX_Automation.git
 ```
 
 **Push your branch to GitHub:**
