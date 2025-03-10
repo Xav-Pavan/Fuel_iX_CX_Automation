@@ -1,8 +1,7 @@
 import json
 import os
-
+import time
 import allure
-
 from Fuel_iX_CX.data.test_SCB_data import SCB_TestData
 
 
@@ -31,7 +30,7 @@ try:
     scb_test_data = get_scb_test_data()  # Fetch scb_test.json
     print("SCB test data loaded successfully:", scb_test_data)
 except Exception as e:
-    print(e)
+    print(f"⚠️ Error loading test data: {e}")
 
 
 def save_screenshot(page, screenshot_filename):
@@ -44,8 +43,11 @@ def save_screenshot(page, screenshot_filename):
     # Ensure the screenshot directory exists
     os.makedirs(SCB_TestData.SCREENSHOT_PATH, exist_ok=True)
 
+    # Generate timestamp
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+
     # Construct the full screenshot path
-    screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH, f"{screenshot_filename}{SCB_TestData.FILE_TYPE}")
+    screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH, f"{screenshot_filename}_{timestamp}{SCB_TestData.FILE_TYPE}")
 
     # Capture and save the screenshot
     page.screenshot(path=screenshot_path)
@@ -53,11 +55,11 @@ def save_screenshot(page, screenshot_filename):
     # Attach screenshot to Allure report
     allure.attach.file(
         screenshot_path,
-        name=screenshot_filename,
+        name=f"{screenshot_filename}_{timestamp}",
         attachment_type=allure.attachment_type.PNG
     )
 
     # Logging (optional)
-    print(f"Screenshot saved at: {screenshot_path}")
+    print(f"✅ Screenshot saved at: {screenshot_path}")
 
     return screenshot_path  # Return the path for further reference if needed
