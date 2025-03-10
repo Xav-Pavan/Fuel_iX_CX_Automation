@@ -1,0 +1,25 @@
+Cenrtal Repository Icon is succesfully clicked
+ Flow type Central Repository Icon is successfully clicked
+Schedule_Callback_Get_Available_Slots is successfully created and validated
+Schedule_New_CallBack_Request is successfully created and validated
+Booking_Success is successfully created and validated
+Reschedule_CallBack_Request is successfully created and validated
+Issue_Occurred is successfully created and validated
+CallBack_Booking_Failed is successfully created and validated
+Canceling_CallBack_Request is successfully created and validated
+✅ Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Schedule_Callback_Get_Available_Slots_20250310_150725.png
+✅ Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Schedule_New_CallBack_Request_20250310_150748.png
+✅ Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Booking_Success_20250310_150811.png
+✅ Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Reschedule_CallBack_Request_20250310_150831.png
+✅ Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Editing_issue_occurred_node_20250310_150837.png
+✅ Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Editing_callBack_booking_failed_20250310_150846.png
+✅ Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Editing_canceling_callBack_request_20250310_150910.png
+Templates imported successfully in bot category.
+✅ Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Import_successfully_20250310_150923.png
+Train job has been scheduled.
+✅ Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Train_job_has_been_scheduled_20250310_150924.png
+'Transaction Bot MQA' bot trained successfully
+✅ Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Transaction_Bot_MQA_bot_trained_successfully_20250310_150957.png
+Initial Callback Confirmation: Today at 6:30 PM
+Rescheduled Callback Confirmation: Today at 7:00 PM
+✅ Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Main_DashBoard_20250310_151022.png

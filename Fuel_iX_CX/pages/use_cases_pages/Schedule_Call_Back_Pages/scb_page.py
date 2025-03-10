@@ -13,7 +13,6 @@ from Fuel_iX_CX.utils.helpers import save_screenshot
 class SCBPage:
 
     def __init__(self, page):
-
         self.page = page
         self.widget_locators = WidgetPageLocators(self.page)
         self.dashboard_locators = ReportAndAnalyticsDashboardPageLocators(self.page)
@@ -96,6 +95,7 @@ class SCBPage:
         intentlocators.BACK_BUTTON.wait_for(state="visible", timeout=2000)
         intentlocators.BACK_BUTTON.click()
 
+    @allure.step("scb_editing_issue_occurred_node")
     def scb_editing_issue_occurred_node(self):
         ##opening issue accured node for editing
 
@@ -114,6 +114,8 @@ class SCBPage:
         self.page.wait_for_timeout(800)
 
         intentlocators.SCB_SAVE_BUTTON.click()
+        screenshot_filename = "Editing_issue_occurred_node"
+        save_screenshot(self.page, screenshot_filename)
 
         self.page.wait_for_timeout(800)
 
@@ -122,6 +124,7 @@ class SCBPage:
 
         intentlocators.SCB_BACK_BUTTON.click()
 
+    @allure.step("scb_editing_callBack_booking_failed_node")
     def scb_editing_callBack_booking_failed_node(self):
         ##opening callBack_booking_failed node for editing
 
@@ -160,6 +163,8 @@ class SCBPage:
         ## saving node and clicking on back button to move to intent template page
         self.page.wait_for_timeout(800)
         intentlocators.SCB_SAVE_BUTTON.click()
+        screenshot_filename = "Editing_callBack_booking_failed"
+        save_screenshot(self.page, screenshot_filename)
 
         self.page.wait_for_timeout(800)
         intentlocators.SCB_BACK_BUTTON.click()
@@ -167,6 +172,7 @@ class SCBPage:
         self.page.wait_for_timeout(500)
         intentlocators.SCB_BACK_BUTTON.click()
 
+    @allure.step("scb_editing_canceling_callBack_request_node")
     def scb_editing_canceling_callBack_request_node(self):
         ## opening canceling_callBack_request_node for editing
 
@@ -233,46 +239,35 @@ class SCBPage:
         # self.page.locator("(//button[normalize-space()='Done'])[1]").click()
         intentlocators.SCB_DONE_BUTTON2.click()
 
-
         intentlocators.SCB_TEXT_BLANK_TEXTBOX.fill('''Sorry, I can't find any callback request.''')
         intentlocators.SCB_ADD_CARDS_BUTTON.click()
 
-
         intentlocators.SCB_ADD_CARDS_BUTTON.click()
         intentlocators.SCB_ADD_WEBHOOK_CARD.click()
-
 
         intentlocators.SCB_WEBHOOK_DROPDOWN.click()
         intentlocators.SCB_CALL_CANCEL_REQUEST_WEBHOOK.click()
         ##setting timezonein webhook card
 
-
         intentlocators.SCB_TIMEZONE_FIELD.clear()
         intentlocators.SCB_EMPTY_WEBHOOK_FIELD.nth(3).fill("{{$sys:TimeZoneName}}")
 
-
         intentlocators.SCB_SERVICE_ID_FIELD.clear()
         intentlocators.SCB_EMPTY_WEBHOOK_FIELD.nth(6).fill("{{$local:serviceId}}")
-
 
         intentlocators.SCB_SERVICE_NAME_FIELD.clear()
         intentlocators.SCB_EMPTY_WEBHOOK_FIELD.nth(7).fill("{{$local:serviceName}}")
         ## click on add cards button
         intentlocators.SCB_ADD_CARDS_BUTTON.click()
 
-
-
         intentlocators.SCB_ADD_CARDS_BUTTON.click()
         intentlocators.SCB_TEXT_CARD_BUTTON_ICON.click()
-
 
         intentlocators.SCB_ADD_FILTER_ICON.nth(4).click()
         ##apply response=200 in filters inside text card
 
-
         intentlocators.SCB_SCOPE_DDOWN_IN_FILTER.click()
         intentlocators.SCB_WEBHOOK_IN_SCOPE_DDOWN_IN_FILTER.click()
-
 
         intentlocators.SCB_SLOT_NAME_SELECT_DDOWN_IN_FILTER.click()
         intentlocators.SCB_SELECT_SR_RESPONSECODE_DDOWN_IN_FILTER.fill("sR.responseCode")
@@ -292,13 +287,10 @@ class SCBPage:
 
         ## inputing text message in the TEXT card
 
-
-
         intentlocators.SCB_TEXT_BLANK_TEXTBOX.fill("Your callback has been cancelled.")
         intentlocators.SCB_ADD_CARDS_BUTTON.click()
 
         ## adding last  textcard with response!=200
-
 
         intentlocators.SCB_ADD_CARDS_BUTTON.click()
         intentlocators.SCB_TEXT_CARD_BUTTON_ICON.click()
@@ -308,16 +300,12 @@ class SCBPage:
         intentlocators.SCB_ADD_FILTER_ICON.nth(5).click()
         ##apply response=200 in filters inside text card
 
-
         intentlocators.SCB_SCOPE_DDOWN_IN_FILTER.click()
         intentlocators.SCB_WEBHOOK_IN_SCOPE_DDOWN_IN_FILTER.click()
-
-
 
         intentlocators.SCB_SLOT_NAME_SELECT_DDOWN_IN_FILTER.click()
         intentlocators.SCB_SELECT_SR_RESPONSECODE_DDOWN_IN_FILTER.fill("sR.responseCode")
         self.page.keyboard.press("Enter")
-
 
         intentlocators.SCB_SLOT_NAME_SELECT_DDOWN_IN_FILTER.click()
         intentlocators.SCB_CONDITION_DROPDOWN.click()
@@ -328,19 +316,17 @@ class SCBPage:
         intentlocators.SCB_DONE_BUTTON.click()
         # inputing answer in  text card
 
-
-
         intentlocators.SCB_TEXT_CARD_EDITOR_2.fill(
             '''Sorry, We are unable to cancel your callback. Please try after some time.''')
-
 
         intentlocators.SCB_ADD_CARDS_BUTTON.click()
 
         # saving node and click on back button
         self.page.wait_for_timeout(800)
 
-
         intentlocators.SCB_SAVE_BUTTON.click()
+        screenshot_filename = "Editing_canceling_callBack_request"
+        save_screenshot(self.page, screenshot_filename)
 
         self.page.wait_for_timeout(800)
 
@@ -350,6 +336,7 @@ class SCBPage:
         intentlocators.SCB_BACK_BUTTON.click()
 
     #     adding 4nodes here
+    @allure.step("editing_Schedule_Callback_Get_Available_Slots_Node")
     def editing_Schedule_Callback_Get_Available_Slots_Node(self):
         """Modify the 'Get Available Slots' node in the callback schedule."""
 
@@ -958,6 +945,7 @@ class SCBPage:
         expect(self.widget_locators.CLOSE_BUTTON).to_be_enabled(timeout=60000)
         self.widget_locators.CLOSE_BUTTON.click()
 
+    @allure.step("dashboard")
     def dashboard(self):
         """Automates the navigation and interaction with the dashboard."""
 
@@ -968,6 +956,8 @@ class SCBPage:
         expect(self.dashboard_locators.REFRESH_DASHBOARD_BUTTON).to_be_visible(
             timeout=60000)
         self.dashboard_locators.REFRESH_DASHBOARD_BUTTON.click()
+        screenshot_filename = "Main_DashBoard"
+        save_screenshot(self.page, screenshot_filename)
 
         # Step 3: Click on the first interactive element in the dashboard
         expect(self.dashboard_locators.FIRST_INTERACTIVE_ELEMENT).to_be_visible(timeout=50000)
@@ -977,7 +967,6 @@ class SCBPage:
         expect(self.dashboard_locators.VIEW_TRANSACTIONAL_DETAILS).to_be_visible(
             timeout=50000)
         self.dashboard_locators.VIEW_TRANSACTIONAL_DETAILS.click()
-
 
         # Ensure the directory exists
         os.makedirs(SCB_TestData.SCREENSHOT_PATH, exist_ok=True)

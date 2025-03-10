@@ -40,6 +40,11 @@ def page_fixture(playwright: Playwright, request):
 
     yield page  # Yield the page instance for the test
 
+    # Stop tracing and save the trace file
+    # trace_path = "reports/trace.zip"
+    # context.tracing.stop(path=trace_path)
+    # logging.info(f"📝 Trace saved at: {trace_path}")
+
     # Capture a final screenshot before closing the browser
     screenshot_dir = os.path.join(SCB_TestData.SCREENSHOT_PATH)
     os.makedirs(screenshot_dir, exist_ok=True)  # Ensure the directory exists
