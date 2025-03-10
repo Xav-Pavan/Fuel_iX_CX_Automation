@@ -553,9 +553,9 @@ class SCBPage:
 
         # Configure 'GoTo' logic based on Webhook response
         self.locators.GOTO_BUTTON.click()
-        self.page.wait_for_timeout(500)
+        self.page.wait_for_timeout(800)
         self.locators.ADD_FILTER_ICON_3.click()
-        self.page.wait_for_timeout(500)
+        self.page.wait_for_timeout(800)
 
         # Select 'Webhook' scope
 
@@ -580,8 +580,9 @@ class SCBPage:
 
         # Configure fallback logic when Webhook response is not 200
         self.locators.SCB_1_GOTO_BUTTON.click()
-
+        self.page.wait_for_timeout(800)
         self.locators.SCB_1_WEBHOOK_FILTER_ICON.click()
+        self.page.wait_for_timeout(800)
         self.locators.RESPONSE_SCOPE.click()
         self.locators.SCB_1_WEBHOOK_BUTTON_1.click()
 
