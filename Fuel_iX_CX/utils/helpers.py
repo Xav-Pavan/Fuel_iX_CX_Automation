@@ -1,6 +1,10 @@
 import json
 import os
 
+import allure
+
+from Fuel_iX_CX.data.test_SCB_data import SCB_TestData
+
 
 def get_test_data(file_name="test_data.json"):
     """Fetch test data from the specified JSON file using a dynamic project root path."""
@@ -28,3 +32,32 @@ try:
     print("SCB test data loaded successfully:", scb_test_data)
 except Exception as e:
     print(e)
+
+
+def save_screenshot(page, screenshot_filename):
+    """
+    Captures and saves a screenshot at the defined path and attaches it to Allure reports.
+
+    :param page: Playwright page instance
+    :param screenshot_filename: Name of the screenshot file (without extension)
+    """
+    # Ensure the screenshot directory exists
+    os.makedirs(SCB_TestData.SCREENSHOT_PATH, exist_ok=True)
+
+    # Construct the full screenshot path
+    screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH, f"{screenshot_filename}{SCB_TestData.FILE_TYPE}")
+
+    # Capture and save the screenshot
+    page.screenshot(path=screenshot_path)
+
+    # Attach screenshot to Allure report
+    allure.attach.file(
+        screenshot_path,
+        name=screenshot_filename,
+        attachment_type=allure.attachment_type.PNG
+    )
+
+    # Logging (optional)
+    print(f"Screenshot saved at: {screenshot_path}")
+
+    return screenshot_path  # Return the path for further reference if needed

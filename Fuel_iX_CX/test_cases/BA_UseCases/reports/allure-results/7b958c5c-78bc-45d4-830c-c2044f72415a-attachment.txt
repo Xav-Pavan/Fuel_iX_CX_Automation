@@ -1,0 +1,12 @@
+Cenrtal Repository Icon is succesfully clicked
+ Flow type Central Repository Icon is successfully clicked
+Schedule_Callback_Get_Available_Slots is successfully created and validated
+Schedule_New_CallBack_Request is successfully created and validated
+Booking_Success is successfully created and validated
+Reschedule_CallBack_Request is successfully created and validated
+Issue_Occurred is successfully created and validated
+CallBack_Booking_Failed is successfully created and validated
+Canceling_CallBack_Request is successfully created and validated
+Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Schedule_Callback_Get_Available_Slots.png
+Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Schedule_New_CallBack_Request.png
+Screenshot saved at: C:\Users\puchha.pavan\PycharmProjects\Playwright_Automation\Fuel_iX_CX_Automation\Fuel_iX_CX\reports\Screenshots\Booking_Success.png

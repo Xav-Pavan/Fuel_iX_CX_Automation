@@ -4,13 +4,19 @@ import allure
 from playwright.sync_api import expect
 
 from Fuel_iX_CX.data.test_SCB_data import SCB_TestData
+from Fuel_iX_CX.locators.dashboard_locators import ReportAndAnalyticsDashboardPageLocators
 from Fuel_iX_CX.locators.intent_locators import IntentPageLocators
+from Fuel_iX_CX.locators.widget_locators import WidgetPageLocators
+from Fuel_iX_CX.utils.helpers import save_screenshot
 
 
 class SCBPage:
 
     def __init__(self, page):
+
         self.page = page
+        self.widget_locators = WidgetPageLocators(self.page)
+        self.dashboard_locators = ReportAndAnalyticsDashboardPageLocators(self.page)
 
     def add_text_card(self, text_msg):
         intentlocators.ADD_CARDS_LINK.click()
@@ -492,6 +498,8 @@ class SCBPage:
         self.page.wait_for_timeout(800)
         self.locators.SCB_1_SAVE_BUTTON.click()
         self.page.wait_for_timeout(800)
+        screenshot_filename = SCB_TestData.FIRST_NODE_NAME
+        save_screenshot(self.page, screenshot_filename)
 
         self.locators.SCB_1_CONFIRM_BUTTON.click()
         self.page.wait_for_timeout(500)
@@ -606,6 +614,8 @@ class SCBPage:
         self.page.wait_for_timeout(1000)
         self.locators.SCB_1_SAVE_BUTTON.click()
         self.page.wait_for_timeout(1000)
+        screenshot_filename = SCB_TestData.SECOND_NODE_NAME
+        save_screenshot(self.page, screenshot_filename)
 
         self.locators.SCB_1_CONFIRM_BUTTON.click()
         self.page.wait_for_timeout(500)
@@ -699,6 +709,8 @@ class SCBPage:
         self.page.wait_for_timeout(800)
         self.locators.SCB_1_SAVE_BUTTON.click()
         self.page.wait_for_timeout(800)
+        screenshot_filename = SCB_TestData.THIRD_NODE_NAME
+        save_screenshot(self.page, screenshot_filename)
         self.locators.SCB_1_CONFIRM_BUTTON.click()
         self.page.wait_for_timeout(500)
         self.locators.SCB_1_CONFIRM_BUTTON.click()
@@ -808,6 +820,8 @@ class SCBPage:
         self.page.wait_for_timeout(800)
         self.locators.SCB_1_SAVE_BUTTON.click()
         self.page.wait_for_timeout(800)
+        screenshot_filename = SCB_TestData.FOURTH_NODE_NAME
+        save_screenshot(self.page, screenshot_filename)
         self.locators.SCB_1_CONFIRM_BUTTON.click()
         self.page.wait_for_timeout(500)
         self.locators.SCB_1_CONFIRM_BUTTON.click()
@@ -847,11 +861,9 @@ class SCBPage:
             self.locators.IMPORT_BUTTON.click()
             Import_successfully = self.locators.IMPORT_SUCCESS_MESSAGE.inner_text()
             print(Import_successfully)
-            assert Import_successfully == "Templates imported successfully in bot category."
-            screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH, "Import_successfully.png")
-            self.page.screenshot(path=screenshot_path)
-
-            print(f"Screenshot saved at: {screenshot_path}")
+            assert Import_successfully == SCB_TestData.EXPECTED_SUCCESS_MESSAGE_IMPORT
+            screenshot_filename = "Import_successfully"
+            save_screenshot(self.page, screenshot_filename)
 
         with allure.step("Train the Bot"):
             self.locators.CHATBOT_ICON_BUTTON_1.click()
@@ -859,21 +871,18 @@ class SCBPage:
                 timeout=50000)
             Train_successfully = self.locators.TRAIN_SUCCESS_MESSAGE.inner_text()
             print(Train_successfully)
-            assert Train_successfully == "Train job has been scheduled."
-            screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH, "Train_job_has_been_scheduled.png")
-
-            self.page.screenshot(path=screenshot_path)
+            assert Train_successfully == SCB_TestData.EXPECTED_SUCCESS_MESSAGE_TRAIN
+            screenshot_filename = "Train_job_has_been_scheduled"
+            save_screenshot(self.page, screenshot_filename)
 
         with allure.step("Verifying success message after bot training"):
             expect(self.locators.TRANSACTION_BOT_TRAINED_MESSAGE) \
                 .to_be_visible(timeout=50000)
             Trained_successfully = self.locators.TRAIN_SUCCESS_MESSAGE.inner_text()
             print(Trained_successfully)
-            assert Trained_successfully == "'Transaction Bot MQA' bot trained successfully"
-            screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH,
-                                           "Transaction_Bot_MQA_bot_trained_successfully.png")
-
-            self.page.screenshot(path=screenshot_path)
+            assert Trained_successfully == SCB_TestData.EXPECTED_SUCCESS_MESSAGE_TRAINED
+            screenshot_filename = "Transaction_Bot_MQA_bot_trained_successfully"
+            save_screenshot(self.page, screenshot_filename)
 
     @allure.step("Connecting with the widget and scheduling a call back")
     def connecting_with_widget(self):
@@ -881,104 +890,95 @@ class SCBPage:
 
         # Step 1: Open Chat Widget
         logging.info("💬 Launching the widget...")
-        expect(self.page.get_by_label("Open Chat")).to_be_enabled()
-        self.page.get_by_label("Open Chat").click()
+        expect(self.widget_locators.OPEN_CHAT_BUTTON).to_be_enabled()
+        self.widget_locators.OPEN_CHAT_BUTTON.click()
 
         # Step 2: Select the 'Transaction Bot MQA'
-        expect(self.page.locator("//span[@title='Transaction Bot MQA']")).to_be_visible()
-        self.page.locator("//span[@title='Transaction Bot MQA']").click()
+        expect(self.widget_locators.TRANSACTION_BOT).to_be_visible()
+        self.widget_locators.TRANSACTION_BOT.click()
         # Waiting for the bot to load
 
         # Step 3: Request for the earliest possible time slot
-        expect(self.page.locator("(//*[@id='user-input-message'])[1]")).to_be_visible(timeout=50000)
-        self.page.locator("(//*[@id='user-input-message'])[1]").fill(SCB_TestData.FIRST_NODE_QUESTION)
-        self.page.locator("(//button[@id='msgSenderButton'])[1]").click()
+        expect(self.widget_locators.USER_INPUT_MESSAGE).to_be_visible(timeout=50000)
+        self.widget_locators.USER_INPUT_MESSAGE.fill(SCB_TestData.WIDGET_FIRST_QUESTION)
+        self.widget_locators.SEND_MESSAGE_BUTTON.click()
 
         # Step 4: Provide user name (e.g., Hulk)
 
-        expect(self.page.locator(
-            "//span[@class='displayed-text']//b[contains(text(),'So we know who to ask for, what is your name?')]")).to_be_visible(
-            timeout=60000)
-        self.page.locator("(//*[@id='user-input-message'])[1]").fill("Hulk")
-        expect(self.page.locator("(//button[@id='msgSenderButton'])[1]")).to_be_enabled(timeout=50000)
-        self.page.locator("(//button[@id='msgSenderButton'])[1]").click()
+        expect(self.widget_locators.NAME_PROMPT).to_be_visible(timeout=60000)
+        self.widget_locators.USER_INPUT_MESSAGE.fill(SCB_TestData.WIDGET_CUSTOMER_NAME)
+        expect(self.widget_locators.SEND_MESSAGE_BUTTON).to_be_enabled(timeout=50000)
+        self.widget_locators.SEND_MESSAGE_BUTTON.click()
 
         # Step 5: Provide phone number
 
-        expect(self.page.locator(
-            "//span[@class='displayed-text']//b[contains(text(),'Next, please enter the phone number you want us to')]")).to_be_visible(
+        expect(self.widget_locators.PHONE_NUMBER_PROMPT).to_be_visible(
             timeout=60000)
-        self.page.locator("(//*[@id='user-input-message'])[1]").fill("9172736951")
-        expect(self.page.locator("(//button[@id='msgSenderButton'])[1]")).to_be_enabled(timeout=50000)
-        self.page.locator("(//button[@id='msgSenderButton'])[1]").click()
+        self.widget_locators.USER_INPUT_MESSAGE.fill(SCB_TestData.WIDGET_CUSTOMER_PHONE_NUMBER)
+        expect(self.widget_locators.SEND_MESSAGE_BUTTON).to_be_enabled(timeout=50000)
+        self.widget_locators.SEND_MESSAGE_BUTTON.click()
 
         # Step 6: Select the first available callback slot
-        expect(self.page.locator("//ul[@class='list-group']/li[1]")).to_be_visible(timeout=60000)
-        self.page.locator("//ul[@class='list-group']/li[1]").click()
+        expect(self.widget_locators.FIRST_AVAILABLE_SLOT).to_be_visible(timeout=60000)
+        self.widget_locators.FIRST_AVAILABLE_SLOT.click()
 
         # Step 7: Extract and print the callback confirmation message
-        expect(self.page.locator("(//div[@class='rcw-message-text rcw-bot-bubble-radius m-b-5'])[4]")).to_be_visible(
+        expect(self.widget_locators.CALLBACK_CONFIRMATION).to_be_visible(
             timeout=50000)
-        callback_value = self.page.locator(
-            "(//div[@class='rcw-message-text rcw-bot-bubble-radius m-b-5'])[4]").inner_text()
+        callback_value = self.widget_locators.CALLBACK_CONFIRMATION.inner_text()
         print(f"Initial Callback Confirmation: {callback_value}")
 
         # Step 8: Click 'Reschedule' button
-        expect(self.page.locator("(//button[normalize-space()='Reschedule'])[1]")).to_be_visible(timeout=60000)
-        self.page.locator("(//button[normalize-space()='Reschedule'])[1]").click()
+        expect(self.widget_locators.RESCHEDULE_BUTTON).to_be_visible(timeout=60000)
+        self.widget_locators.RESCHEDULE_BUTTON.click()
 
         # Step 9: Select the second available callback slot
-        expect(self.page.locator("//ul[@class='list-group']/li[2]")).to_be_visible(timeout=60000)
-        self.page.locator("//ul[@class='list-group']/li[2]").click()
+        expect(self.widget_locators.SECOND_AVAILABLE_SLOT).to_be_visible(timeout=60000)
+        self.widget_locators.SECOND_AVAILABLE_SLOT.click()
 
         # Step 10: Extract and print the rescheduled callback confirmation message
-        expect(self.page.locator("(//div[@class='rcw-message-text rcw-bot-bubble-radius m-b-5'])[6]")).to_be_visible(
+        expect(self.widget_locators.RESCHEDULED_CALLBACK_CONFIRMATION).to_be_visible(
             timeout=50000)
-        next_callback_value = self.page.locator(
-            "(//div[@class='rcw-message-text rcw-bot-bubble-radius m-b-5'])[6]").inner_text()
+        next_callback_value = self.widget_locators.RESCHEDULED_CALLBACK_CONFIRMATION.inner_text()
         print(f"Rescheduled Callback Confirmation: {next_callback_value}")
 
         # Step 11: Cancel the scheduled callback
-        expect(self.page.locator("(//button[contains(@title,'Cancel')][normalize-space()='Cancel'])[2]")).to_be_visible(
+        expect(self.widget_locators.CANCEL_BUTTON).to_be_visible(
             timeout=60000)
-        self.page.locator("(//button[contains(@title,'Cancel')][normalize-space()='Cancel'])[2]").click()
+        self.widget_locators.CANCEL_BUTTON.click()
 
         # Step 12: Click on the cross icon options
-        expect(self.page.locator("//span[@class='rcw-options-icons cursor close-header']")).to_be_visible(
+        expect(self.widget_locators.CLOSE_ICON).to_be_visible(
             timeout=50000)
-        self.page.locator("//span[@class='rcw-options-icons cursor close-header']").click()
+        self.widget_locators.CLOSE_ICON.click()
 
         # Step 13: Skip feedback and close the widget
-        expect(self.page.locator("(//button[normalize-space()='Skip'])[1]")).to_be_visible(timeout=60000)
-        self.page.locator("(//button[normalize-space()='Skip'])[1]").click()
-        expect(self.page.locator("(//button[normalize-space()='Close'])[1]")).to_be_enabled(timeout=60000)
-        self.page.locator("(//button[normalize-space()='Close'])[1]").click()
+        expect(self.widget_locators.SKIP_BUTTON).to_be_visible(timeout=60000)
+        self.widget_locators.SKIP_BUTTON.click()
+        expect(self.widget_locators.CLOSE_BUTTON).to_be_enabled(timeout=60000)
+        self.widget_locators.CLOSE_BUTTON.click()
 
     def dashboard(self):
         """Automates the navigation and interaction with the dashboard."""
 
         # Step 1: Click on 'Analytics and Reports' section
-        self.page.locator("//li[@data-tip='Analytics and Reports']").click()
+        self.dashboard_locators.ANALYTICS_REPORTS_TAB.click()
 
         # Step 2: Click on the 'Refresh Dashboard' button
-        expect(
-            self.page.locator("//span[@title='Refresh Dashboard']//img[@class='chatbot-header-icon']")).to_be_visible(
+        expect(self.dashboard_locators.REFRESH_DASHBOARD_BUTTON).to_be_visible(
             timeout=60000)
-        self.page.locator("//span[@title='Refresh Dashboard']//img[@class='chatbot-header-icon']").click()
+        self.dashboard_locators.REFRESH_DASHBOARD_BUTTON.click()
 
         # Step 3: Click on the first interactive element in the dashboard
-        expect(self.page.locator("(//span[@class='hand'])[1]")).to_be_visible(timeout=50000)
-        self.page.locator("(//span[@class='hand'])[1]").click()
+        expect(self.dashboard_locators.FIRST_INTERACTIVE_ELEMENT).to_be_visible(timeout=50000)
+        self.dashboard_locators.FIRST_INTERACTIVE_ELEMENT.click()
 
         # Step 4: Click to expand and view all transactional details
-        expect(self.page.locator("(//span[@title='Click to see all transactional details'])[1]")).to_be_visible(
+        expect(self.dashboard_locators.VIEW_TRANSACTIONAL_DETAILS).to_be_visible(
             timeout=50000)
-        self.page.locator("(//span[@title='Click to see all transactional details'])[1]").click()
+        self.dashboard_locators.VIEW_TRANSACTIONAL_DETAILS.click()
 
-        # Step 5: Capture a full-page screenshot for verification
-        # screenshot_path = os.path.join(SCB_TestData.SCREENSHOT_PATH)
-        # self.page.screenshot(path=screenshot_path, full_page=True)
-        # allure.attach.file(screenshot_path, name="Dashboard Screenshot", attachment_type=allure.attachment_type.PNG)
+
         # Ensure the directory exists
         os.makedirs(SCB_TestData.SCREENSHOT_PATH, exist_ok=True)
 

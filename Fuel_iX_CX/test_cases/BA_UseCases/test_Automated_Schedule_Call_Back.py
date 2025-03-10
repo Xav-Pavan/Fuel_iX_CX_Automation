@@ -1,7 +1,7 @@
 import allure
 
 from Fuel_iX_CX.objects.page_objects import initialize_page_objects
-from Fuel_iX_CX.utils.helpers import  get_scb_test_data
+from Fuel_iX_CX.utils.helpers import get_scb_test_data
 
 
 @allure.feature("Schedule_Call_Back")
@@ -59,7 +59,7 @@ def test_verify_the_schedule_call_back(page_fixture):
     with allure.step(f"Logging in as {username}"):
         pages["login_page"].loginDetails(username, domain, password)
 
-    with allure.step(" dasboard page"):
+    with allure.step(" dashboard page"):
         pages["dashboard_page"].analytics_Page_Validation()
         pages["dashboard_page"].click_central_repository_icon()
     with allure.step(" centralRepo page"):
@@ -69,22 +69,22 @@ def test_verify_the_schedule_call_back(page_fixture):
         pages["flowrepo_page"].navigate_to_new_folder_to_add_new_intent()
         pages["intentTemplate_page"].add_template_name_to_new_intent()
         pages["scb_page"].creating_schedule_callback_scenerio_get_available_slots_node(getAvailableNodeTitle,
-                                                                                          getAvailableNodeQuestion,
-                                                                                          getAvailableNodeTextCard)
+                                                                                       getAvailableNodeQuestion,
+                                                                                       getAvailableNodeTextCard)
         pages["scb_page"].creating_schedule_new_callBack_request_node(newCallBackNodeTitle, newCallBackNodeQuestion,
-                                                                         newCallBackNodeTextCard)
+                                                                      newCallBackNodeTextCard)
         pages["scb_page"].creating_booking_success_node(bookingSuccessNodeTitle, bookingSuccessNodeQuestion,
-                                                           bookingSuccessNodeTextCard)
+                                                        bookingSuccessNodeTextCard)
         pages["scb_page"].creating_reschedule_callBack_request_node(rescheduleCallBackNodeTitle,
-                                                                       rescheduleCallBackNodeQuestion,
-                                                                       rescheduleCallBackNodeTextCard)
+                                                                    rescheduleCallBackNodeQuestion,
+                                                                    rescheduleCallBackNodeTextCard)
         pages["scb_page"].creating_issue_occured_node(issueOccuredNodeTitle, issueOccuredNodeQuestion,
-                                                         issueOccuredNodeTextCard)
+                                                      issueOccuredNodeTextCard)
         pages["scb_page"].creating_callBack_booking_failed_node(bookingfailedNodeTitle, bookingfailedNodeQuestion,
-                                                                   bookingfailedNodeTextCard)
+                                                                bookingfailedNodeTextCard)
         pages["scb_page"].creating_canceling_callBack_request_node(cancelingCallBackNodeTitle,
-                                                                      cancelingCallBackNodeQuestion,
-                                                                      cancelingCallBackNodeTextCard)
+                                                                   cancelingCallBackNodeQuestion,
+                                                                   cancelingCallBackNodeTextCard)
 
     with allure.step("Editing Schedule Callback Nodes"):
         pages["scb_page"].editing_Schedule_Callback_Get_Available_Slots_Node()
